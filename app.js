@@ -16,6 +16,12 @@ const passport = require('./config/passport')
 // cors 的預設為全開放
 app.use(cors())
 
+// Add this↓
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`)
+  next()
+})
+
 // 設定 view engine 使用 handlebars
 app.engine('handlebars', handlebars({
   defaultLayout: 'main',
